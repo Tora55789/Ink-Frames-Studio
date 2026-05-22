@@ -67,9 +67,8 @@ header {
 /* ===== HERO ===== */
 .hero {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
+  display: flex;
+  justify-content: center;
   align-items: center;
   padding: 120px 40px;
   margin-top: 60px;
@@ -93,12 +92,14 @@ header {
 .hero-text {
   position: relative;
   z-index: 2;
-  max-width: 600px;
+  max-width: 900px;
+  text-align: center;
 }
 
 .hero-label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 48px;
+  font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--accent);
@@ -130,7 +131,10 @@ header {
 
 .hero-actions {
   display: flex;
+  flex-direction: column;
   gap: 20px;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
   animation: fadeInUp 0.8s var(--ease) 0.8s forwards;
 }
@@ -582,16 +586,13 @@ footer {
 <!-- HERO -->
 <div class="hero">
   <div class="hero-text">
-    <span class="hero-label">INK FRAMES STUDIO</span>
-    <h1 class="hero-title">Chaque histoire mérite son image</h1>
+    <span class="hero-label" style="font-family: &quot;Times New Roman&quot;">INK FRAMES STUDIO</span>
+    <h1 class="hero-title">Chaque histoire mérite<br />d'être racontée</h1>
     <p class="hero-desc">Studio de production audiovisuelle indépendant. Nous transformons les idées en images fortes et racontons des histoires visuelles qui marquent les esprits.</p>
     <div class="hero-actions">
       <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Commencer</button>
       <button class="btn btn-secondary" onclick="document.getElementById('showreel').scrollIntoView({behavior:'smooth'})">Showreel</button>
     </div>
-  </div>
-  <div class="hero-media">
-    <img src="uploads/ChatGPT Image 22 mai 2026, 16_06_15-88afc203.png" alt="Ink Frames" />
   </div>
 </div>
 
@@ -744,7 +745,7 @@ footer {
     <form class="form">
       <div class="form-field">
         <label>Votre nom</label>
-        <input type="text" required placeholder="Anthony Riga" />
+        <input type="text" required placeholder="Jean Dupont" />
       </div>
       <div class="form-field">
         <label>Email</label>
@@ -1091,8 +1092,8 @@ function applyBubbleText(el) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // RevealText on hero title AND all section titles
-  document.querySelectorAll('.hero-title, .section-title').forEach(applyRevealText);
+  // RevealText on all section titles (but NOT hero-title to preserve <br />)
+  document.querySelectorAll('.section-title').forEach(applyRevealText);
 });
 const dmServices = [
   { num: "01", title: "Montage vidéo", description: "Du rush brut à l'œuvre finale, nous assemblons chaque plan avec précision pour construire une narration fluide et percutante. Transitions soignées, rythme adapté à votre message, étalonnage colorimétrique professionnel.", tags: ["Film de marque", "Documentaire", "Clip", "Publicité"] },
